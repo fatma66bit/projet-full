@@ -53,85 +53,110 @@ const QuizPage = () => {
 
   if (loading) {
     return (
-      <Box textAlign="center" mt={6}>
-        <CircularProgress />
-        <Typography sx={{ mt: 2 }} variant="h6" color="textSecondary">
-          Chargement du quiz...
-        </Typography>
+      <Box
+        sx={{
+          minHeight: '100vh',
+          width: '100vw',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          background: 'linear-gradient(135deg, #f3e5f5, #e1f5fe)',
+        }}
+      >
+        <Box textAlign="center">
+          <CircularProgress />
+          <Typography sx={{ mt: 2 }} variant="h6" color="textSecondary">
+            Chargement du quiz...
+          </Typography>
+        </Box>
       </Box>
     );
   }
 
   return (
-    <Container maxWidth="md" sx={{ mt: 6, mb: 6 }}>
-      <Typography
-        variant="h4"
-        gutterBottom
-        sx={{ fontWeight: 'bold', textAlign: 'center', color: '#1976d2' }}
-      >
-        Quiz : {quiz.topic.name}
-      </Typography>
-
-      {quiz.questions.map((q: any, index: number) => (
-        <Paper
-          key={q.id}
-          elevation={6}
-          sx={{
-            p: 3,
-            mb: 3,
-            borderRadius: 3,
-            background: 'linear-gradient(135deg, #e3f2fd, #e8f5e9)',
-          }}
+    <Box
+      sx={{
+        minHeight: '100vh',
+        width: '100vw',
+        background: 'linear-gradient(135deg, #f3e5f5, #e1f5fe)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'start', // aligné en haut
+        py: 6,
+        px: 2,
+        overflowY: 'auto',
+      }}
+    >
+      <Container maxWidth="md">
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ fontWeight: 'bold', textAlign: 'center', color: '#1976d2' }}
         >
-          <Typography variant="h6" sx={{ mb: 2 }}>
-            {index + 1}. {q.questionText}
-          </Typography>
-          <RadioGroup
-            value={responses[index]}
-            onChange={(e) => handleResponseChange(index, e.target.value)}
+          Quiz : {quiz.topic.name}
+        </Typography>
+
+        {quiz.questions.map((q: any, index: number) => (
+          <Paper
+            key={q.id}
+            elevation={6}
+            sx={{
+              p: 3,
+              mb: 3,
+              borderRadius: 3,
+              background: 'linear-gradient(135deg, #e3f2fd, #e8f5e9)',
+            }}
           >
-            {q.options.map((opt: string, i: number) => (
-              <FormControlLabel
-                key={i}
-                value={opt}
-                control={<Radio />}
-                label={opt}
-                sx={{
-                  '& .MuiFormControlLabel-label': {
-                    fontSize: '1rem',
-                    color: '#555',
-                  },
-                }}
-              />
-            ))}
-          </RadioGroup>
-        </Paper>
-      ))}
+            <Typography variant="h6" sx={{ mb: 2 }}>
+              {index + 1}. {q.questionText}
+            </Typography>
+            <RadioGroup
+              value={responses[index]}
+              onChange={(e) => handleResponseChange(index, e.target.value)}
+            >
+              {q.options.map((opt: string, i: number) => (
+                <FormControlLabel
+                  key={i}
+                  value={opt}
+                  control={<Radio />}
+                  label={opt}
+                  sx={{
+                    '& .MuiFormControlLabel-label': {
+                      fontSize: '1rem',
+                      color: '#555',
+                    },
+                  }}
+                />
+              ))}
+            </RadioGroup>
+          </Paper>
+        ))}
 
-      <Box textAlign="center" mt={4}>
-        <Button
-          variant="contained"
-          sx={{
-            background: 'linear-gradient(to right, #36d1dc, #81c784)',
-            px: 5,
-            py: 1.5,
-            fontWeight: 'bold',
-            fontSize: '1.1rem',
-            borderRadius: 3,
-            color: '#fff',
-            boxShadow: '0 4px 14px rgba(54, 209, 220, 0.4)',
-            '&:hover': {
-              background: 'linear-gradient(to right, #81c784, #36d1dc)',
-              boxShadow: '0 6px 20px rgba(129, 199, 132, 0.6)',
-            },
-          }}
-          onClick={handleSubmit}
-          disabled={responses.includes('')}
-        >
-          Soumettre le Quiz
-        </Button>
-      </Box>
-    </Container>
+        <Box textAlign="center" mt={4}>
+          <Button
+            variant="contained"
+            sx={{
+              background: 'linear-gradient(to right, #36d1dc, #81c784)',
+              px: 5,
+              py: 1.5,
+              fontWeight: 'bold',
+              fontSize: '1.1rem',
+              borderRadius: 3,
+              color: '#fff',
+              boxShadow: '0 4px 14px rgba(54, 209, 220, 0.4)',
+              '&:hover': {
+                background: 'linear-gradient(to right, #81c784, #36d1dc)',
+                boxShadow: '0 6px 20px rgba(129, 199, 132, 0.6)',
+              },
+            }}
+            onClick={handleSubmit}
+            disabled={responses.includes('')}
+          >
+            Soumettre le Quiz
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 

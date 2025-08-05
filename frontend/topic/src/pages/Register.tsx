@@ -47,19 +47,17 @@ const Register = () => {
 
   return (
     <Box
-      sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundImage: `url('/bg-quiz-pattern.png')`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundBlendMode: 'overlay',
-        backgroundColor: '#83a4d4',
-      }}
-    >
+  sx={{
+    minHeight: '100vh',
+    width: '100vw', // ✅ Ajouté
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'linear-gradient(135deg, #b388ff, #81d4fa, #f48fb1)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+>
       <Container maxWidth="xs">
         <Paper
           elevation={10}
@@ -70,11 +68,11 @@ const Register = () => {
             flexDirection: 'column',
             alignItems: 'center',
             backgroundColor: '#ffffffcc',
-            backdropFilter: 'blur(10px)',
+            backdropFilter: 'blur(12px)',
             boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'primary.main', width: 56, height: 56 }}>
+          <Avatar sx={{ m: 1, bgcolor: '#b388ff', width: 56, height: 56 }}>
             <LockOutlinedIcon fontSize="large" />
           </Avatar>
 
@@ -160,11 +158,11 @@ const Register = () => {
                 fontSize: '1rem',
                 fontWeight: 'bold',
                 textTransform: 'none',
-                background: 'linear-gradient(to right, #00b09b, #96c93d)',
+                background: 'linear-gradient(to right, #b388ff, #81d4fa, #f48fb1)',
                 color: '#fff',
                 boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
                 '&:hover': {
-                  background: 'linear-gradient(to right, #96c93d, #00b09b)',
+                  background: 'linear-gradient(to right, #f48fb1, #81d4fa, #b388ff)',
                 },
               }}
             >

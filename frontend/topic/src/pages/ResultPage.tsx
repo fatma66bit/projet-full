@@ -19,6 +19,17 @@ const ResultPage = () => {
   const percentage = Math.round((result.score / result.totalScore) * 100);
 
   return (
+    <Box
+    sx={{
+      minHeight: '100vh',
+      width: '100vw',
+      background: 'linear-gradient(135deg, #e0f7fa, #f3e5f5)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      px: 2,
+    }}
+  >
     <Container maxWidth="sm" sx={{ mt: 6, mb: 6 }}>
       <Paper
         elevation={8}
@@ -74,6 +85,7 @@ const ResultPage = () => {
         </Box>
       </Paper>
     </Container>
+    </Box>
   );
 };
 

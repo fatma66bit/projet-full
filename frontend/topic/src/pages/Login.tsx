@@ -31,19 +31,30 @@ const Login = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const res = await api.post('/users/loginClient', loginData);
-      const token = res.data.accessToken;
-      localStorage.setItem('userId', res.data.userId);
-      localStorage.setItem('token', token);
+  try {
+    const res = await api.post('/users/loginClient', loginData);
+    const token = res.data.accessToken;
+
+    localStorage.setItem('userId', res.data.userId);
+    localStorage.setItem('token', token);
+
+    localStorage.setItem('role', res.data.role); // ✅ récupérer depuis le backend
+const role = res.data.role;
+ // ✅ récupération du rôle
+
+    if (role === 'ADMIN') {
+      navigate('/admin');
+    } else {
       navigate('/topic');
-    } catch (err) {
-      console.error('Erreur de connexion :', err);
-      alert('Nom ou mot de passe incorrect');
     }
-  };
+  } catch (err) {
+    console.error('Erreur de connexion :', err);
+    alert('Nom ou mot de passe incorrect');
+  }
+};
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -51,18 +62,18 @@ const Login = () => {
 
   return (
     <div
-      style={{
-        minHeight: '100vh',
-        width: '100%',
-        backgroundImage: `url('/images.jpeg')`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
+  style={{
+    minHeight: '100vh',
+    width: '100vw', // ✅ Ajouté ici
+    backgroundImage: `url('/images.jpeg')`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}
+>
       <Container maxWidth="xs">
         <Paper
           elevation={10}

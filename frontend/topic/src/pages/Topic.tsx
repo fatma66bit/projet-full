@@ -65,7 +65,7 @@ const TopicPage = () => {
         return;
       }
       const res = await api.post('/quiz/generate/auto', null, {
-        params: { topicId, questionCount: 5 },
+        params: { topicId },
       });
       const quizId = res.data.id;
       navigate(`/quiz/${quizId}`);
@@ -76,9 +76,10 @@ const TopicPage = () => {
   };
 
   return (
-    <Box
+   <Box
       sx={{
         minHeight: '100vh',
+        width: '100vw',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -89,6 +90,8 @@ const TopicPage = () => {
         backgroundColor: '#a1c4fd',
         backgroundBlendMode: 'overlay',
         px: 2,
+        py: 4,
+        overflowY: 'auto',
       }}
     >
       <Container maxWidth="md">
